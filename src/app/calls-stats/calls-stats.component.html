@@ -1,0 +1,37 @@
+<div *ngFor="let stat of stats">
+    <span>DATE - {{stat.dateOfStats | date: 'dd-MM-yyyy'}}</span>
+    <br>
+    <br>
+    <span>TOTAL CALL TIME INBOUND - {{stat.totalCallTimeInbound}}</span>
+    <br>
+    <br>
+    <span>TOTAL CALL TIME OUTBOUND - {{stat.totalCallTimeOutbound}}</span>
+    <br>
+    <br>
+    <span>TOTAL CALLS -{{stat.totalCalls}}</span>
+    <br>
+    <br>
+    <span>TOTAL CALL COST - {{stat.totalCallCost}}</span>
+    <br>
+    <br>
+    <span>NUMBER OF CALLS BY CALLER NUMBER</span>
+    <br>
+    <div *ngFor="let caller of stat.numberOfCallsByCallerNumber">
+        <span>NUMBER - {{caller.number}}</span>
+        <br>
+        <span>CALLS - {{caller.numberOfCalls}}</span>
+        <br>
+    </div>
+    <br>
+    <br>
+    <span>NUMBER OF CALLS BY CALLEE NUMBER</span>
+    <br>
+    <div *ngFor="let callee of stat.numberOfCallsByCalleeNumber">
+        <span>NUMBER - {{callee.number}}</span>
+        <br>
+        <span>CALLS - {{callee.numberOfCalls}}</span>
+        <br>
+    </div>
+    <br>
+    <br>
+</div>

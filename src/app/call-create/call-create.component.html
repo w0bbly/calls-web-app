@@ -1,0 +1,42 @@
+<div *ngFor="let call of calls.controls">
+    <br>
+<br>
+    <form class="form-container" [formGroup]="call">
+        <mat-form-field class="input-value" [floatLabel]="call.value.floatLabel">
+            <input matInput formControlName="callerNumber" type="number" min="0" placeholder="Caller Number" max="9"
+                required>
+        </mat-form-field>
+
+        <mat-form-field class="input-value" [floatLabel]="createCallForm.value.floatLabel">
+            <input matInput formControlName="calleeNumber" type="number" min="0" placeholder="Callee Number" max="9"
+                required>
+        </mat-form-field>
+
+        <mat-form-field>
+            <input formControlName="startTime" matInput type="datetime-local" placeholder="Start Date">
+        </mat-form-field>
+
+        <mat-form-field>
+            <input formControlName="endTime" matInput type="datetime-local" placeholder="End Date">
+        </mat-form-field>
+
+        <mat-label>Type:</mat-label>
+
+        <mat-radio-group formControlName="type">
+            <mat-radio-button value="INBOUND">INBOUND</mat-radio-button>
+            <mat-radio-button value="OUTBOUND">OUTBOUND</mat-radio-button>
+        </mat-radio-group>
+
+        <br>
+
+        
+    </form>
+</div>
+<br>
+<br>
+<span>---------------------------------------------------------------------------------</span>
+<br><br>
+<button (click)="addCall()">Add call</button>
+<button [disabled]='!calls.valid' (click)="submitCall()">
+    Create Call(s)
+</button>

@@ -1,0 +1,20 @@
+.form-container {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+}
+
+.input-value {
+    width: 50% !important;
+}
+
+::ng-deep.wc-date-container {
+    width: 50% !important;
+    height: 30px !important;
+    border: none !important;
+    border-bottom: 1px solid black !important;
+}
+
+::ng-deep.wc-date-container > span {
+    color: black !important;
+}

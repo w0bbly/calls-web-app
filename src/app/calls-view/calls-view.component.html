@@ -1,0 +1,48 @@
+<select (change)="filter($event)">
+    <option>INBOUND</option>
+    <option>OUTBOUND</option>
+</select>
+
+<br>
+<br>
+
+<div>
+    <div class="table-position mat-elevation-z2">
+        <table *ngIf="dataSource" mat-table [dataSource]="dataSource" class="mat-elevation-z8" style="width: 100%;">
+            <ng-container matColumnDef="ID">
+                <th mat-header-cell *matHeaderCellDef class="table-header-text"> ID </th>
+                <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+            </ng-container>
+            <ng-container matColumnDef="Caller">
+                <th mat-header-cell *matHeaderCellDef class="table-header-text"> Caller </th>
+                <td mat-cell *matCellDef="let element"> {{element.callerNumber}} </td>
+            </ng-container>
+            <ng-container matColumnDef="Callee">
+                <th mat-header-cell *matHeaderCellDef class="table-header-text"> Callee </th>
+                <td mat-cell *matCellDef="let element"> {{element.calleeNumber}} </td>
+            </ng-container>
+            <ng-container matColumnDef="Start">
+                <th mat-header-cell *matHeaderCellDef class="table-header-text"> Start </th>
+                <td mat-cell *matCellDef="let element"> {{element.startTime | date: 'dd/MM/yyyy - HH:mm'}} </td>
+            </ng-container>
+            <ng-container matColumnDef="End">
+                <th mat-header-cell *matHeaderCellDef class="table-header-text"> End </th>
+                <td mat-cell *matCellDef="let element"> {{element.endTime | date: 'dd/MM/yyyy - HH:mm'}} </td>
+            </ng-container>
+            <ng-container matColumnDef="Type">
+                <th mat-header-cell *matHeaderCellDef class="table-header-text"> Type </th>
+                <td mat-cell *matCellDef="let element"> {{element.type}} </td>
+            </ng-container>
+            <ng-container matColumnDef="Action">
+                <th mat-header-cell *matHeaderCellDef> Action </th>
+                <td mat-cell *matCellDef="let element" class="action-link">
+                    <button (click)="deleteRow(element)">Delete</button>
+                </td>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+        <mat-paginator #paginator [pageSizeOptions]="pageSizeOptions" [pageSize]="pageSize" (page)="clickPage($event)"
+            showFirstLastButtons></mat-paginator>
+    </div>
+</div>
